@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -9,35 +11,12 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  --Deep-Violet: #21092f;
+  --Purplish-Grey: #8f8694;
+  --White: #fff;
+  --Light-Grey: #dfdee0;
+  --Red: #ff5050;
+  --Gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -122,6 +101,8 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-size: 18px;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 /*

@@ -1,3 +1,5 @@
+import CardDetails from "./components/CardDetails";
+
 export default function Home() {
-  return <>Hello World</>;
+  return <CardDetails></CardDetails>;
 }
