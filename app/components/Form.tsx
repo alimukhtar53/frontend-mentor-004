@@ -5,7 +5,13 @@ import styled from "styled-components";
 import Button from "./ui-elements/Button";
 import ThankYou from "./ThankYou";
 
-function Form() {
+interface Props {
+  handleChange: (
+    key: string
+  ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function Form({ handleChange }: Props) {
   const [isSuccess, setIsSuccess] = React.useState<boolean>(false);
 
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,7 +28,11 @@ function Form() {
       {!isSuccess ? (
         <>
           <Label>Cardholder Name</Label>
-          <InputWrapper placeholder="e.g. Jane Appleseed"></InputWrapper>
+          <InputWrapper
+            id="name"
+            onChange={handleChange("name")}
+            placeholder="e.g. Jane Appleseed"
+          />
           <Spacer value={20}></Spacer>
           <Label>Card Number</Label>
           <InputWrapper placeholder="e.g. 1234 5678 9123 0000"></InputWrapper>
@@ -109,6 +119,10 @@ const InputWrapper = styled.input`
   &:focus {
     border: 1px solid #6348fe;
     outline: none;
+  }
+
+  &.smooth-transition {
+    transition: border 0.3s ease; /* Specify the properties you want to transition */
   }
 
   &::placeholder {

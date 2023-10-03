@@ -17,10 +17,17 @@ export default function Home() {
     expiry: 0,
     cvv: 123,
   });
+
+  const handleChange = (key: string) => {
+    return function (e: React.ChangeEvent<HTMLInputElement>) {
+      setUserCardDetails({ ...userCardDetails, [key]: e.target.value });
+    };
+  };
+
   return (
     <>
       <CardDetails userCardDetails={userCardDetails} />
-      <Form></Form>
+      <Form handleChange={handleChange}></Form>
     </>
   );
 }
