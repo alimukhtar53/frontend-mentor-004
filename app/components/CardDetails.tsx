@@ -16,8 +16,11 @@ function CardDetails({ userCardDetails }: Props) {
   const bgfront = "/assets/images/bg-card-front.png";
   const bgback = "/assets/images/bg-card-back.png";
 
-  const { cardNumber, name, expiry, cvv } = userCardDetails;
-  const formattedExpiry = expiry < 10 ? `0${expiry}` : expiry;
+  const { cardNumber, name, expiryMonth, expiryYear, cvv } = userCardDetails;
+
+  const formattedExpiry = (expiry: number) => {
+    return expiry < 10 ? `0${expiry}` : expiry;
+  };
 
   return (
     <>
@@ -34,7 +37,7 @@ function CardDetails({ userCardDetails }: Props) {
                 <CardFooter>
                   <Name>{name}</Name>
                   <Expiry>
-                    {formattedExpiry}/{formattedExpiry}
+                    {formattedExpiry(expiryMonth)}/{formattedExpiry(expiryYear)}
                   </Expiry>
                 </CardFooter>
               </Details>

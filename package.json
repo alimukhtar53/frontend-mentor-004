@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-input/mask": "^1.0.20",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",

@@ -4,6 +4,7 @@ import Spacer from "./ui-elements/Spacer";
 import styled from "styled-components";
 import Button from "./ui-elements/Button";
 import ThankYou from "./ThankYou";
+import { useMask } from "@react-input/mask";
 
 interface Props {
   handleChange: (
@@ -35,19 +36,33 @@ function Form({ handleChange }: Props) {
           />
           <Spacer value={20}></Spacer>
           <Label>Card Number</Label>
-          <InputWrapper placeholder="e.g. 1234 5678 9123 0000"></InputWrapper>
+          <InputWrapper
+            id="cardNumber"
+            onChange={handleChange("cardNumber")}
+            placeholder="e.g. 1234 5678 9123 0000"
+          />
           <Spacer value={20}></Spacer>
           <div className="input-footer">
             <div className="expiry">
               <Label>Exp. Date (MM/YY)</Label>
               <div className="expiry-container">
-                <InputWrapper placeholder="MM"></InputWrapper>
-                <InputWrapper placeholder="YY"></InputWrapper>
+                <InputWrapper
+                  id="expiryMonth"
+                  onChange={handleChange("expiryMonth")}
+                  placeholder="MM"
+                  max={2}
+                />
+                <InputWrapper
+                  id="expiryYear"
+                  onChange={handleChange("expiryYear")}
+                  placeholder="YY"
+                  max={2}
+                />
               </div>
             </div>
-            <div className="cvc">
+            <div className="cvv" onChange={handleChange("cvv")}>
               <Label>CVC</Label>
-              <InputWrapper placeholder="e.g. 123"></InputWrapper>
+              <InputWrapper placeholder="e.g. 123" />
             </div>
           </div>
           <Spacer value={28} />
@@ -71,7 +86,7 @@ const FormWrapper = styled.form`
   .expiry {
     min-width: 152px;
   }
-  .cvc {
+  .cvv {
     width: 100%;
   }
   .expiry-container {
