@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-interface Props {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
 }
 
-function Button({ children }: Props) {
-  return <ButtonWrapper>{children}</ButtonWrapper>;
+function Button({ children, ...restProps }: Props) {
+  return <ButtonWrapper {...restProps}>{children}</ButtonWrapper>;
 }
 
 const ButtonWrapper = styled.button`

@@ -1,39 +1,56 @@
 "use client";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import Spacer from "./ui-elements/Spacer";
 import styled from "styled-components";
 import Button from "./ui-elements/Button";
+import ThankYou from "./ThankYou";
 
 function Form() {
+  const [isSuccess, setIsSuccess] = React.useState<boolean>(false);
+
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSuccess(true);
+  };
+
+  const formReset = () => {
+    setIsSuccess(false);
+  };
   return (
-    <FormWrapper>
+    <FormWrapper onSubmit={onSubmitHandler}>
       <Spacer value={91} />
-      <Label>Cardholder Name</Label>
-      <InputWrapper placeholder="e.g. Jane Appleseed"></InputWrapper>
-      <Spacer value={20}></Spacer>
-      <Label>Card Number</Label>
-      <InputWrapper placeholder="e.g. 1234 5678 9123 0000"></InputWrapper>
-      <Spacer value={20}></Spacer>
-      <div className="input-footer">
-        <div className="expiry">
-          <Label>Exp. Date (MM/YY)</Label>
-          <div className="expiry-container">
-            <InputWrapper placeholder="MM"></InputWrapper>
-            <InputWrapper placeholder="YY"></InputWrapper>
+      {!isSuccess ? (
+        <>
+          <Label>Cardholder Name</Label>
+          <InputWrapper placeholder="e.g. Jane Appleseed"></InputWrapper>
+          <Spacer value={20}></Spacer>
+          <Label>Card Number</Label>
+          <InputWrapper placeholder="e.g. 1234 5678 9123 0000"></InputWrapper>
+          <Spacer value={20}></Spacer>
+          <div className="input-footer">
+            <div className="expiry">
+              <Label>Exp. Date (MM/YY)</Label>
+              <div className="expiry-container">
+                <InputWrapper placeholder="MM"></InputWrapper>
+                <InputWrapper placeholder="YY"></InputWrapper>
+              </div>
+            </div>
+            <div className="cvc">
+              <Label>CVC</Label>
+              <InputWrapper placeholder="e.g. 123"></InputWrapper>
+            </div>
           </div>
-        </div>
-        <div className="cvc">
-          <Label>CVC</Label>
-          <InputWrapper placeholder="e.g. 123"></InputWrapper>
-        </div>
-      </div>
-      <Spacer value={28} />
-      <Button>Confirm</Button>
+          <Spacer value={28} />
+          <Button>Confirm</Button>
+        </>
+      ) : (
+        <ThankYou formReset={formReset} />
+      )}
     </FormWrapper>
   );
 }
 
-const FormWrapper = styled.div`
+const FormWrapper = styled.form`
   padding: 0 24px;
 
   .input-footer {

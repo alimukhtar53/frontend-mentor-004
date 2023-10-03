@@ -5,11 +5,19 @@ import styled from "styled-components";
 import bgCardBack from "/public/assets/images/bg-card-back.png";
 import bgCardFront from "/public/assets/images/bg-card-front.png";
 import cardLogo from "/public/assets/images/card-logo.svg";
+import { CreditCardInfo } from "../page";
 
-function CardDetails() {
+interface Props {
+  userCardDetails: CreditCardInfo;
+}
+
+function CardDetails({ userCardDetails }: Props) {
   const bgmobile = "/assets/images/bg-main-mobile.png";
   const bgfront = "/assets/images/bg-card-front.png";
   const bgback = "/assets/images/bg-card-back.png";
+
+  const { cardNumber, name, expiry, cvv } = userCardDetails;
+  const formattedExpiry = expiry < 10 ? `0${expiry}` : expiry;
 
   return (
     <>
@@ -17,15 +25,17 @@ function CardDetails() {
         <Header bgmobile={bgmobile}>
           <CardsContainer>
             <CardBack bgback={bgback}>
-              <Cvv>123</Cvv>
+              <Cvv>{cvv}</Cvv>
             </CardBack>
             <CardFront bgfront={bgfront}>
               <Image src={cardLogo} height={30} alt="bg"></Image>
               <Details>
-                <CardNumber>9591 6489 6389 1011</CardNumber>
+                <CardNumber>{cardNumber}</CardNumber>
                 <CardFooter>
-                  <Name>Ali Mukhtar</Name>
-                  <Expiry>09/26</Expiry>
+                  <Name>{name}</Name>
+                  <Expiry>
+                    {formattedExpiry}/{formattedExpiry}
+                  </Expiry>
                 </CardFooter>
               </Details>
             </CardFront>
