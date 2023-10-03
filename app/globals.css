@@ -16,7 +16,7 @@
   --White: #fff;
   --Light-Grey: #dfdee0;
   --Red: #ff5050;
-  --Gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+  --Gradient: linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
 }
 
 @media (prefers-color-scheme: dark) {
