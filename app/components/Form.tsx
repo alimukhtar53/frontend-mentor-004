@@ -77,6 +77,10 @@ function Form({ handleChange }: Props) {
 
 const FormWrapper = styled.form`
   padding: 0 24px;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 
   @media screen and (min-width: 1024px) {
     width: max-content;
