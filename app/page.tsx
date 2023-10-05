@@ -2,6 +2,7 @@
 import React from "react";
 import CardDetails from "./components/CardDetails";
 import Form from "./components/Form";
+import styled from "styled-components";
 
 export type CreditCardInfo = {
   cardNumber: string;
@@ -11,7 +12,7 @@ export type CreditCardInfo = {
   cvv: number;
 };
 
-export default function Home() {
+function Home() {
   const [userCardDetails, setUserCardDetails] = React.useState<CreditCardInfo>({
     cardNumber: "0000 0000 0000 0000",
     name: "Ali Mukhtar",
@@ -27,9 +28,17 @@ export default function Home() {
   };
 
   return (
-    <>
+    <Container>
       <CardDetails userCardDetails={userCardDetails} />
       <Form handleChange={handleChange}></Form>
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
+`;
+
+export default Home;

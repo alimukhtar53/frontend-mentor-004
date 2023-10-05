@@ -15,6 +15,7 @@ const ButtonWrapper = styled.button`
   text-align: center;
   width: 100%;
   padding: 15px 0;
+  cursor: pointer;
 
   color: var(--White, #fff);
   font-feature-settings: "clig" off, "liga" off;

@@ -78,6 +78,14 @@ function Form({ handleChange }: Props) {
 const FormWrapper = styled.form`
   padding: 0 24px;
 
+  @media screen and (min-width: 1024px) {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+  }
+
   .input-footer {
     display: flex;
     gap: 12px;

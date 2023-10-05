@@ -13,6 +13,7 @@ interface Props {
 
 function CardDetails({ userCardDetails }: Props) {
   const bgmobile = "/assets/images/bg-main-mobile.png";
+  const bgdesktop = "/assets/images/bg-main-desktop.png";
   const bgfront = "/assets/images/bg-card-front.png";
   const bgback = "/assets/images/bg-card-back.png";
 
@@ -25,7 +26,7 @@ function CardDetails({ userCardDetails }: Props) {
   return (
     <>
       <CardWrapper>
-        <Header bgmobile={bgmobile}>
+        <Header bgmobile={bgmobile} bgdesktop={bgdesktop}>
           <CardsContainer>
             <CardBack bgback={bgback}>
               <Cvv>{cvv}</Cvv>
@@ -52,19 +53,41 @@ function CardDetails({ userCardDetails }: Props) {
 const CardWrapper = styled.div`
   font-family: Space Grotesk;
   display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
-const Header = styled.div<{ bgmobile: string }>`
+const Header = styled.div<{ bgmobile: string; bgdesktop: string }>`
   height: 240px;
   width: 100%;
   border: 1px solid;
   background-image: url(${(props) => props.bgmobile});
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media screen and (min-width: 1024px) {
+    min-height: 100vh;
+    min-width: max-content;
+    background-image: url(${(props) => props.bgdesktop});
+  }
 `;
 
 const CardsContainer = styled.div`
   padding: 32px 16px;
+  @media screen and (min-width: 1024px) {
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    gap: 22px;
+  }
 `;
 
 const CardBack = styled.div<{ bgback: string }>`
@@ -79,6 +102,11 @@ const CardBack = styled.div<{ bgback: string }>`
   background-size: cover;
   display: flex;
   align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    left: 50%;
+    filter: drop-shadow(0px 39px 60px rgba(0, 0, 0, 0.14));
+  }
 `;
 
 const Cvv = styled.p`
@@ -92,6 +120,10 @@ const Cvv = styled.p`
   text-transform: uppercase;
   margin-left: auto;
   padding-right: 1rem;
+
+  @media screen and (min-width: 1024px) {
+    position: relative;
+  }
 `;
 
 const CardFront = styled.div<{ bgfront: string }>`
@@ -108,6 +140,11 @@ const CardFront = styled.div<{ bgfront: string }>`
   flex-direction: column;
   justify-content: space-between;
   filter: drop-shadow(0px 39px 60px rgba(0, 0, 0, 0.14));
+
+  @media screen and (min-width: 1024px) {
+    top: 0;
+    left: 35%;
+  }
 `;
 
 const Details = styled.div`
